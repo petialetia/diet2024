@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%22%D0%BC%D0%BE%D0%B9-%D0%BE%D0%BF%D1%8B%D1%82-%D0%BF%D0%BE%D1%85%D1%83%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-%D1%81-%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%B0-2024-%D0%BE%D0%B3%D0%BE-%D0%B3%D0%BE%D0%B4%D0%B0%22-%D0%B8%D0%BB%D0%B8-%22%D1%81%D0%BA%D0%B0%D0%B7-%D0%BF%D1%80%D0%BE-%D1%82%D0%BE-%D0%BA%D0%B0%D0%BA-%D1%8F-%D0%B4%D0%BE%D0%BB%D0%B3-15-%D0%B3%D0%BE%D0%B4%D0%B0-%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B0%D0%BB%22">&quot;Мой опыт похудания с начала 2024-ого года&quot; или &quot;Сказ про то, как я долг 1,5 года возвращал&quot;</h1>
+<div style="text-align: right"> Любар Пётр Андреевич </div>
+<p>Это эссе выросло из моей зачётной работы по гуманитарной дисциплине &quot;Философия и культура здорового образа жизни&quot;. Читать следует, если вам интересен мой опыт похудания с ~125 кг. до ~100 кг., быть может, это будет для вас поучительно или вдохновляюще.</p>
+<p>Для контекста, описанные мною события происходили пока я учился на 4 - 5 курсах физтеха.</p>
+<h2 id="%D0%BF%D1%80%D0%BE%D0%BB%D0%BE%D0%B3-%D0%BE%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C-2023">Пролог, октябрь 2023</h2>
+<p>История начинается ещё осенью 2023-его года. Именно тогда, примерно в начале октября, мне пришла в голову идея после сессии (в конце января или в феврале) познакомить двух своих друзей, одного студенческого, другого - ещё школьного. Хорошие люди должны знать друг друга, я считаю. Ну и в качестве места для их знакомства и нашей общей посиделки я выбрал бар.</p>
+<p>Мой студенческий друг, притом что при случае никогда не был против выпить, отказывался договариваться наперёд. Мол, пить плохо, может я за эти 3-4 месяца приду к тому, что перестану пить в принципе, заранее потому ничего обещать не буду. Но мне очень хотелось, чтобы мы в итоге пришли к договорённости, такой я человек, люблю делать их наперёд.</p>
+<p>В результате мой друг рассудил так: он готов будет пообещать поехать со мной в бар и познакомится с моим другим, школьным, другом, но я взамен тогда должен буду пообещать, что сразу после этого мероприятия начну скидывать вес, и не остановлюсь, пока не достигну отметки в 100 кг (я на тот момент весил ~125 кг).</p>
+<p><strong>И я оказался достаточно глупым, чтобы согласиться на это.</strong></p>
+<h2 id="%D0%BF%D0%B5%D1%80%D0%B2%D0%B0%D1%8F-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B0-%D1%81%D0%BA%D0%B8%D0%BD%D1%83%D1%82%D1%8C-%D0%B2%D0%B5%D1%81-%D1%84%D0%B5%D0%B2%D1%80%D0%B0%D0%BB%D1%8C-2024">Первая попытка скинуть вес, февраль 2024</h2>
+<p>Собственно, это самое мероприятие состоялось, вечер прошёл просто замечательно. Не знаю, общаются ли 2 моих друга промеж собой, но, как минимум, они знают о существовании друг друга, это уже хорошо.</p>
+<p>Как и обещал, сразу после нашей посиделки, начиная с 7-ого февраля, я решил начать скидывать вес.</p>
+<p>Тут стоит сразу сказать, намеревался я это делать без физических нагрузок. Основная причина: когда ты жирный, тебе не хочется лишний раз идти куда-то, в какой-то там зал, чтобы позаниматься. Даже если этот зал буквально в соседнем общежитии.</p>
+<p>Я хотел скинуть вес исключительно через диету, конкретно через калорийную диету. Я начал следить за кол-вом потребляемых калорий, старался попадать по ним в окно 2 - 2,5 тысячи калорий в день. И в принципе, у меня это получалось... Первое время.</p>
+<p>Спустя 2 недели соблюдения такой диеты я стал замечать за собой следующее:</p>
+<ol>
+<li><strong>Повышенную раздражительность, вспыльчивость</strong>: я стал чувствовать, что меняются мои реакции на &quot;раздражители&quot; из внешней среды, что некоторые вещи, которых я раньше почти не замечал, сейчас начинали меня откровенно выбешивать.</li>
+<li><strong>Упадок мотивации, лень</strong>: заметил за собой, что мне приходилось заставлять себя делать задания, которые раньше я делал не задумываясь.</li>
+</ol>
+<p>В третью неделю я стал срываться, не мог совладать с собой, как результат, в третью неделю никакого ощутимого прогресса не было, скорее наоборот, регресс, что меня сильно раздосадовало.</p>
+<figure>
+  <center>
+    <img src="1.png"/>
+    <figcaption><em>Динамика изменения моего веса по дням при первой попытке скинуть вес</em></figcaption>
+  </center>
+</figure>
+<p>В итоге, спустя 3 недели я бросил диету, чтобы спокойно доучится последний семестр бакалавриата, без лишнего беспокойства и нервотрёпки. Друг отнёсся к этому с пониманием, всё-таки он осознавал, что 3 недели на диете за один проведённый вечер в баре итак многовато. Однако, я же обещал, что дойду до 100 кг, <strong>дал слово</strong>, в том числе поэтому я эту затею не оставил.</p>
+<h2 id="%D0%B2%D1%82%D0%BE%D1%80%D0%B0%D1%8F-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B0-%D1%81%D0%BA%D0%B8%D0%BD%D1%83%D1%82%D1%8C-%D0%B2%D0%B5%D1%81-%D0%BE%D1%81%D0%B5%D0%BD%D1%8C-2024---%D0%B2%D0%B5%D1%81%D0%BD%D0%B0-2025">Вторая попытка скинуть вес, осень 2024 - весна 2025</h2>
+<p>Проанализировав предыдущую неудачу, я изменил свою стратегию.</p>
+<p>Прежде всего, я исправил своё отношение к еде. Я привык переедать, потому странно ожидать, что организм мгновенно адаптируется к диете с недостатком калорий. Потому иногда я себе вполне мог позволить съесть чуть больше, чем надо.</p>
+<p>Но зато у меня появилась она, та, с которой я оставался наедине на долгие часы, та, которая заставляла моё дыхание учащаться, а сердце - выпрыгивать из груди, та, которую вы можете лицезреть на картинке ниже.</p>
+<figure>
+  <center>
+    <img src="16.png" height="400"/>
+    <figcaption><em>Моя красавица, пудовая гиря</em></figcaption>
+  </center>
+</figure>
+<p>Гиревой спорт, как мне видится, незаслуженно многими остаётся без внимания. Главное для меня преимущество этого направления: чтобы заниматься с гирей, нужна гиря и немного свободного пространства, <strong>всё</strong>. Никаких тренажёров, никаких залов! Бери гирю - и занимайся.</p>
+<p>И притом с помощью гири можно нагрузить почти всё тело, условный рывок гири одной рукой напрягает единовременно и руку, и спину, и ноги.</p>
+<figure>
+  <center>
+    <img src="snatch.gif" height="400"/>
+    <figcaption><em>Рывок гири одной рукой</em></figcaption>
+  </center>
+</figure>
+<p>Как ещё оказалось в будущем, привыкнув к гире, её становится относительно нетяжело переносить, в том числе чтобы позаниматься на улице. Гиревой воркаут на свежем воздухе - очень приятное времяпрепровождение.</p>
+<h3 id="%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D1%82%D1%80%D0%B5%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%BE%D0%BA">Описание тренировок</h3>
+<p>Поначалу я занимался с гирей почти каждый день, но в какой-то момент стал чувствовать, что не восстанавливаюсь от раза к разу, плюс боялся, что сдеру мозоли.</p>
+<p>Я делал комплекс из 10 упражнений, показанных в <a href="https://www.youtube.com/watch?v=1F330aZgZ9M">этом видео</a>. Просто по одному подходу сколько получается.</p>
+<p>Через где-то 2 недели перешёл к тренировке, описанной уже в <a href="https://www.youtube.com/watch?v=J_M9YUV5hJA">этом видео</a>. Сразу делать 10 стартовых повторений не выходило, начинал с 7, постепенно количество стартовых повторений увеличивал. Так в итоге за где-то 2 недели вышел на 10 стартовых повторений.</p>
+<p>Со временем заниматься с одной пудовой гирей стало скучновато, слишком просто, потому я решил приобрести сначала полуторапудовую, а потом вторую пудовую, чтобы можно было делать упражнения сразу с двумя одинаковыми гирями.</p>
+<figure>
+  <center>
+    <img src="double.gif" height="400"/>
+    <figcaption><em>Пример упражнения с двумя гирями</em></figcaption>
+  </center>
+</figure>
+<h3 id="%D0%BC%D0%BE%D0%B7%D0%BE%D0%BB%D0%B8-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B5-%D1%8F-%D0%B1%D0%BE%D1%8F%D0%BB%D1%81%D1%8F-%D1%81%D0%BE%D0%B4%D1%80%D0%B0%D1%82%D1%8C">Мозоли, которые я боялся содрать</h3>
+<p>На самом деле, чтобы не так сильно болели мозоли и чтобы не было страха их содрать, рекомендую заниматься в специальных спортивных перчатках. Заниматься с пудовой гирей без них ещё можно, но вот с гирями потяжелее будет уже очень неприятно.</p>
+<figure class="half">
+  <center>
+    <table>
+      <tr>
+        <td>
+          <img src="left.jpg"/>
+        </td>
+        <td>
+          <img src="right.jpg"/>
+        </td>
+      </tr>
+    </table>
+    <figcaption><em>Те самые мозоли, которые я боялся содрать</em></figcaption>
+  </center>
+</figure>
+<figure>
+  <center>
+    <img src="gloves.webp" height="400"/>
+    <figcaption><em>Пример спортивных перчаток</em></figcaption>
+  </center>
+</figure>
+<h3 id="%D0%BD%D0%B0%D1%80%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B3%D0%B8%D1%80%D1%8C">Наречение гирь</h3>
+<p>У людей есть традиция давать женские имена разным огромным и грандиозным &quot;объектам&quot;, будь то творения природы, вроде озера Виктории или урагана Катрины, или человека, вроде крейсера Авроры или сверхтяжёлого железнодорожного артиллерийского орудия Доры.</p>
+<figure class="half">
+  <center>
+    <table>
+      <tr>
+        <td>
+          <img src="Victoria.jpg" height="120"/>
+        </td>
+        <td>
+          <img src="Katrina.webp" height="120"/>
+        </td>
+        <td>
+          <img src="Avrora.jfif" height="120"/>
+        </td>
+        <td>
+          <img src="Dora.jpg" height="120"/>
+        </td>
+      </tr>
+    </table>
+    <figcaption><em>Вот все перечисленные выше "дамы", слева направо</em></figcaption>
+  </center>
+</figure>
+<p>Но иногда люди дают женские имена и чему-то личному, предмету, с которым таким образом закрепляют эмоциональную, интимную связь. Например, военнослужащие иногда могут наречь свой автомат. Насколько мне известно, такие люди потом испытывают гораздо более сильный ПТСР, потому как не могут пережить расставание с &quot;подругой&quot;, которая выручала в таком количестве сложных ситуаций, и которую они вот так взяли и &quot;бросили&quot;.</p>
+<p>Так вот, как-то само собой так получилось, что я начал обращаться к полуторапудовой гире Брумхильда.</p>
+<p>Я даже не могу наверняка сказать, откуда я взял это имя, в поисковике мне по запросу выдавалась валькирия Брюнхильда из скандинавской мифологии, но вот только имя всё-таки немного отличается, плюс я сам о существовании такой валькирии не знал, пока не начал гуглить.</p>
+<p>Но после гугления чуть более настойчиво, мне выдалась героиня фильма &quot;Джанго освобождённый&quot;, вот она именно что Брумхильда, и этот фильм я когда-то смотрел.</p>
+<figure>
+  <center>
+    <img src="Broomhilda.jpg"/>
+    <figcaption><em>Брумхильда из фильма "Джанго освобождённый"</em></figcaption>
+  </center>
+</figure>
+<p>Но, когда я обращался так к гире, я не вспоминал никакую чернокожую рабыню из фильма, нет.</p>
+<p>Однако, других вариантов, откуда я мог знать это имя, у меня нет, поэтому, думаю, имя &quot;Брумхильда&quot; у меня отложилось после просмотра фильма на подкорке, звучит оно внушающе и грозно, что объясняет мой неосознанный выбор этого имени, оно очень даже подстать полуторапудовой гире.</p>
+<p>Ну и чтобы близняшки, 2 пудовые гири, на меня не обижались, позже и они были наречены именами &quot;Феня&quot; и &quot;Меня&quot;. Тут уже всё максимально просто, это адаптированные, чтобы мне было проще их произносить, имена двух сестёр-великанш из скандинавской мифологии.</p>
+<h3 id="%D0%BF%D1%80%D0%BE%D0%BC%D0%B5%D0%B6%D1%83%D1%82%D0%BE%D1%87%D0%BD%D1%8B%D0%B9-%D0%B8%D1%82%D0%BE%D0%B3-%D0%BC%D0%BE%D0%B5%D0%B9-%D0%B2%D1%82%D0%BE%D1%80%D0%BE%D0%B9-%D0%BF%D0%BE%D0%BF%D1%8B%D1%82%D0%BA%D0%B8-%D1%81%D0%BA%D0%B8%D0%BD%D1%83%D1%82%D1%8C-%D0%B2%D0%B5%D1%81">Промежуточный итог моей второй попытки скинуть вес</h3>
+<p>Несмотря на то, что я решил не прям сильно ограничивать себя в еде, за счёт тренировок с гирями, мой вес пошёл вниз. И 5-ого мая 2025 года я порадовал того самого студенческого друга вернутым долгом.</p>
+<figure>
+  <center>
+    <img src="2.png"/>
+    <figcaption><em>Динамика изменения моего веса по дням при второй попытке скинуть вес</em></figcaption>
+  </center>
+</figure>
+<p>Таким образом, за чуть больше чем 8 месяцев у меня получилось скинуть чуть больше 25 килограмм.</p>
+<p>Могу продемонстрировать то, как я худел, ещё более наглядно.</p>
+<figure>
+  <center>
+    <img src="128.5.jpg" height="400"/>
+    <figcaption><em>18 августа 2024, весил 128.5 кг</em></figcaption>
+  </center>
+</figure>
+<figure class="half">
+  <center>
+    <table>
+      <tr>
+        <td>
+          <img src="120.1.jpg" height="400"/>
+        </td>
+        <td>
+          <img src="120.2.jpg" height="400"/>
+        </td>
+      </tr>
+    </table>
+    <figcaption><em>8 октября 2024, весил 118.3 кг</em></figcaption>
+  </center>
+</figure>
+<figure class="half">
+  <center>
+    <table>
+      <tr>
+        <td>
+          <img src="110.1.jpg" height="400"/>
+        </td>
+        <td>
+          <img src="110.2.jpg" height="400"/>
+        </td>
+      </tr>
+    </table>
+    <figcaption><em>28 января 2025, весил 109.7 кг</em></figcaption>
+  </center>
+</figure>
+<figure class="half">
+  <center>
+    <table>
+      <tr>
+        <td>
+          <img src="100.1.jpg" height="400"/>
+        </td>
+        <td>
+          <img src="100.2.jpg" height="400"/>
+        </td>
+      </tr>
+    </table>
+    <figcaption><em>5 мая 2025, весил 99.8 кг</em></figcaption>
+  </center>
+</figure>
+<h2 id="%D1%87%D1%83%D1%82%D0%BA%D0%B0-%D1%80%D0%B5%D1%82%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%86%D0%B8%D0%B8">Чутка ретроспекции</h2>
+<p>На самом деле, как мне кажется, любой жирный должен задать сам себе вопрос, как он оказался в таком положении. Ответ на этот вопрос, скорее всего, автоматически даст и ответ на вопрос, как из этого положения выйти.</p>
+<p>Проблема в том, что я не оказывался в таком положении. Я будто всегда был в нём. Я не помнил себя весящим 2-значное количество килограммов. И нет, это не потому что я не помню себя младшекурсником, абитуриентом или поздним школьником. Как раз таки помню, и не могу сказать, что я тогдашний часто взвешивался, но когда я это делал, весы всегда показывали 3-значные значения.</p>
+<p>Поэтому, к несчастью, большую часть моей осознанной жизни для меня было нормальным быть жирным, просто потому что я был таким с самого начала этой осознанной жизни.</p>
+<p>Наверное, это делает мой результат ещё большим достижением, что, конечно, прискорбно, учитывая то, что многие и без всяких достижений, по умолчанию, весят меньше центнера.</p>
+<h2 id="%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5">Заключение</h2>
+<p>Напоследок хочу сказать, что даже одна посиделка в баре может стать причиной, по которой вы захотите жить более здоровой жизнью. Так что не бойтесь изредка зависать в барах, знакомиться с новыми людьми или знакомить людей друг с другом. Цитируя Парацельса: &quot;Всё есть яд, и всё есть лекарство, важна лишь доза&quot;.</p>
+
+</body>
+</html>
